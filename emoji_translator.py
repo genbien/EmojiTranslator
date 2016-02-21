@@ -1,18 +1,19 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-# positive_emojis = {u'😀' : ['happy', 'smile'], u'😂' : ['lol', 'laugh', 'cry']}
+import sys
+
 positive_emojis = {'happy':u'😀','smile':u'😀','lol':u'😂','laugh':u'😂','cry':u'😂'}
 
-phrase = "lol ur so funny cry"
+if (len(sys.argv) != 2):
+	print "Usage: emoji_translator.py \"string\""
+	sys.exit()
+phrase = sys.argv[1]
 phrase = phrase.split()
-
-
-ret = []
-
+translated = []
 for word in phrase:
 	if (word in positive_emojis.keys()):
-		ret.append(positive_emojis[word])
+		translated.append(positive_emojis[word])
 	else:
-		ret.append(word)
-print " ".join(ret)
+		translated.append(word)
+print " ".join(translated)
